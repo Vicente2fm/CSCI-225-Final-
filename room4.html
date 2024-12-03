@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin Escape - Room 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="room">
+        <h2>Room 4: The Puzzle Chamber</h2>
+        <p>You stand before a stone door with an inscription: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?"</p>
+        
+        <label for="riddleAnswer">Enter your answer:</label>
+        <input type="text" id="riddleAnswer" placeholder="Type your answer here" autocomplete="off">
+        
+        <button id="checkAnswer" class="next-btn" onclick="checkRiddleAnswer()">Check Answer</button>
+        
+        <p id="riddleResultMessage"></p>
+        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

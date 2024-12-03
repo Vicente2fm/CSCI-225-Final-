@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin Escape - Room 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="room">
+        <h2>Room 3: The Colorful Vault</h2>
+        <p>The walls are adorned with a series of colored buttons. There is a panel with a message: "Match the colors in the right order to proceed."</p>
+        
+        <div id="colorButtons">
+            <button class="color-btn" onclick="chooseColor('red')">Red</button>
+            <button class="color-btn" onclick="chooseColor('blue')">Blue</button>
+            <button class="color-btn" onclick="chooseColor('green')">Green</button>
+            <button class="color-btn" onclick="chooseColor('yellow')">Yellow</button>
+        </div>
+        
+        <p>Current sequence: <span id="currentSequence">None</span></p>
+        <button id="checkSequence" class="next-btn" onclick="checkColorSequence()">Check Sequence</button>
+        
+        <p id="resultMessage"></p>
+        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

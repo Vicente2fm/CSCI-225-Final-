@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin Escape - Room 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="room">
+        <h2>Room 2: The Hidden Vault</h2>
+        <p>The room is dimly lit, and you see a strange combination lock on a door. A note on the wall reads, "The number is hidden beneath the surface."</p>
+        
+        <div id="items">
+            <button class="item" onclick="inspectItem('painting')">Inspect Painting</button>
+            <button class="item" onclick="inspectItem('lock')">Inspect Lock</button>
+        </div>
+        
+        <label for="combinationInput">Enter combination to unlock the door:</label>
+        <input type="number" id="combinationInput" max="9999">
+        <button id="unlockDoor" class="next-btn" onclick="unlockDoor()">Unlock</button>
+        
+        <p id="hintMessage"></p>
+        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+    </div>
+    
+    <script src="game.js"></script>
+    
+
+
+</html>

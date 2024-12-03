@@ -1,0 +1,274 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Header styles for the Cover Page */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.start-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 5px;
+}
+
+/* General Room Styles */
+.room {
+    text-align: center;
+    margin: 50px;
+}
+
+/* Room 1 Specific Styles */
+#items {
+    margin-top: 20px;
+}
+
+.item {
+    margin: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #0056b3;
+}
+
+/* Room 2 Specific Styles */
+input[type="number"] {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#hintMessage {
+    margin-top: 10px;
+    font-style: italic;
+    color: #007bff;
+}
+
+/* Room 3 Specific Styles */
+#colorButtons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.color-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.color-btn:hover {
+    background-color: #e0e0e0;
+}
+
+#resultMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+#currentSequence {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #28a745;
+}
+
+/* Button Styling for the Next Room */
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.next-btn:disabled {
+    background-color: #ccc;
+}
+
+/* General Styles for all Pages */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+/* Room 4 Specific Styles */
+#riddleAnswer {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    width: 300px;
+}
+
+#riddleResultMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+#mathAnswer {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    width: 300px;
+}
+
+#mathResultMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+
+/* Existing styles */
+
+/* Final Room Background and Styling */
+.final-room {
+    position: relative;
+    height: 100vh; /* Full height */
+    background: url('images/forest.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.congratulations-message {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    width: 100%;
+}
+
+.final-room h2 {
+    font-size: 3rem;
+    color: #28a745; /* Green color to indicate success */
+}
+
+.final-room p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #28a745; /* Green button for success */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.next-btn:hover {
+    background-color: #218838;
+}
+/* Existing styles */
+/* Existing styles */
+
+/* Final Room Background and Styling */
+.final-room {
+    position: relative;
+    height: 100vh; /* Full height */
+    background: url('images/forest.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.congratulations-message {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    width: 100%;
+}
+
+.final-room h2 {
+    font-size: 3rem;
+    color: #28a745; /* Green color to indicate success */
+}
+
+.final-room p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #28a745; /* Green button for success */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.next-btn:hover {
+    background-color: #218838;
+}
+
+/* Parallax effect for the forest background */
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.final-room {
+    position: relative;
+    height: 100vh;
+    background: url('images/forest.jpg') no-repeat center center fixed;
+    background-size: cover;
+    animation: moveBackground 60s linear infinite;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

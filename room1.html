@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin Escape - Room 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="room">
+        <h2>Room 1: The Forgotten Chamber</h2>
+        <p>You are in a dusty, old chamber. You notice some items on the shelf and a locked door.</p>
+        <div id="items">
+            <button class="item" onclick="inspectItem('book')">Inspect Book</button>
+            <button class="item" onclick="inspectItem('key')">Inspect Key</button>
+        </div>
+        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
