@@ -65,7 +65,7 @@ function unlockDoor() {
 }
 
 // Room 3 Logic (unchanged from previous)
-let colorSequence = ['red', 'blue', 'green']; // Correct color sequence
+let colorSequence = ['blue', 'blue', 'green']; // Correct color sequence
 let userSequence = [];
 
 function chooseColor(color) {
@@ -78,25 +78,10 @@ function checkColorSequence() {
         alert('Correct sequence! The door opens.');
         isRoom3Completed = true;
         document.getElementById('nextRoom').disabled = false;
-        document.getElementById('resultMessage').textContent = 'Well done! You have solved the color puzzle!';
+        document.getElementById('resultMessage').textContent = 'Well done! ';
     } else {
         alert('Incorrect sequence. Try again!');
         document.getElementById('resultMessage').textContent = 'Wrong sequence, please try again.';
-    }
-}
-
-// Room 4 Logic (unchanged from previous)
-function checkRiddleAnswer() {
-    const answer = document.getElementById('riddleAnswer').value.trim().toLowerCase();
-    
-    if (answer === "echo") {  // Correct answer to the riddle
-        alert('Correct! The stone door opens.');
-        isRoom4Completed = true;
-        document.getElementById('nextRoom').disabled = false;
-        document.getElementById('riddleResultMessage').textContent = 'Well done! The door opens.';
-    } else {
-        alert('Incorrect answer. Try again!');
-        document.getElementById('riddleResultMessage').textContent = 'Wrong answer, please try again.';
     }
 }
 
@@ -104,7 +89,7 @@ function checkRiddleAnswer() {
 function checkMathAnswer() {
     const answer = parseInt(document.getElementById('mathAnswer').value);
     
-    if (answer === 72) {  // Correct math answer to the equation "45 + 27"
+    if (answer === 72) { 
         alert('Correct! The door opens.');
         isRoom5Completed = true;
         document.getElementById('nextRoom').disabled = false;
@@ -115,9 +100,8 @@ function checkMathAnswer() {
     }
 }
 
-// Final Room Logic (congratulations)
 function restartGame() {
-    // Reset all game flags to start over
+
     isRoom1Completed = false;
     isRoom2Completed = false;
     isRoom3Completed = false;
