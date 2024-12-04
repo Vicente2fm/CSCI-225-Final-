@@ -12,11 +12,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //Login using popup
-const log = document.getElementById("login");
-log.submit(function (e) {
+
+$('#login').submit(function (e) {
     console.log("Submit clicked");
     var provider = new firebase.auth.GoogleAuthProvider();
-        
+    
     firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
@@ -29,6 +29,8 @@ log.submit(function (e) {
     var user = result.user;
     // IdP data available in result.additionalUserInfo.profile.
     // ...
+    console.log(user);
+    
     }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
@@ -38,5 +40,8 @@ log.submit(function (e) {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
+        console.log(errorCode);
     });
+    console.log("next room travel");
+    
 });
