@@ -47,15 +47,12 @@ function goToNextRoom() {
 function inspectItemRoom2(item) {
     if (item === 'painting') {
         alert('There seems to be a code hidden under the painting.');
-        document.getElementById('hintMessage').textContent = "Hint: The code is a four-digit number.";
-    } else if (item === 'lock') {
-        alert('The lock looks like it needs a code to open.');
-    }
+        document.getElementById('hintMessage').textContent = "Hint: The code is the web development class number ";}
 }
 
 function unlockDoor() {
     const combination = document.getElementById('combinationInput').value;
-    if (combination === '1234') {  // Correct combination
+    if (combination === '225') {  // Correct combination
         alert('The lock opens! You can now proceed to the next room.');
         isRoom2Completed = true;
         document.getElementById('nextRoom').disabled = false;
@@ -64,8 +61,8 @@ function unlockDoor() {
     }
 }
 
-// Room 3 Logic (unchanged from previous)
-let colorSequence = ['blue', 'blue', 'green']; // Correct color sequence
+// Room 3 Logic
+let colorSequence = ['red', 'white', 'blue']; // Correct color sequence
 let userSequence = [];
 
 function chooseColor(color) {
@@ -78,18 +75,20 @@ function checkColorSequence() {
         alert('Correct sequence! The door opens.');
         isRoom3Completed = true;
         document.getElementById('nextRoom').disabled = false;
-        document.getElementById('resultMessage').textContent = 'Well done! ';
+        document.getElementById('resultMessage').textContent = 'Well done!';
     } else {
         alert('Incorrect sequence. Try again!');
+        userSequence = []; // Reset sequence
         document.getElementById('resultMessage').textContent = 'Wrong sequence, please try again.';
     }
 }
+
 
 // Room 5 Logic (unchanged from previous)
 function checkMathAnswer() {
     const answer = parseInt(document.getElementById('mathAnswer').value);
     
-    if (answer === 72) { 
+    if (answer === -1) { 
         alert('Correct! The door opens.');
         isRoom5Completed = true;
         document.getElementById('nextRoom').disabled = false;
@@ -109,6 +108,6 @@ function restartGame() {
     isRoom5Completed = false;
     isFinalRoomCompleted = false;
     
-    alert('Thanks for playing! The game will now restart.');
+   
     window.location.href = "room1.html"; // Redirect to the first room
 }
