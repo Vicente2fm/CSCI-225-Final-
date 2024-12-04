@@ -11,12 +11,15 @@ function inspectItem(item) {
     if (item === 'book') {
         alert('You found a clue in the book!');
         inventory.push('clue from book');
+    } else if (item === 'key') {
+        alert('You found a key!');
+        inventory.push('key');
     }
     checkRoom1Completion();
 }
 
 function checkRoom1Completion() {
-    if (inventory.includes('clue from book')) {
+    if (inventory.includes('key') && inventory.includes('clue from book')) {
         isRoom1Completed = true;
         document.getElementById('nextRoom').disabled = false;
     }
