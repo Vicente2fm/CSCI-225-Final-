@@ -11,15 +11,12 @@ function inspectItem(item) {
     if (item === 'book') {
         alert('You found a clue in the book!');
         inventory.push('clue from book');
-    } else if (item === 'key') {
-        alert('You found a key!');
-        inventory.push('key');
     }
     checkRoom1Completion();
 }
 
 function checkRoom1Completion() {
-    if (inventory.includes('key') && inventory.includes('clue from book')) {
+    if (inventory.includes('clue from book')) {
         isRoom1Completed = true;
         document.getElementById('nextRoom').disabled = false;
     }
@@ -46,7 +43,7 @@ function goToNextRoom() {
 // Room 2 Logic (unchanged from previous)
 function inspectItemRoom2(item) {
     if (item === 'painting') {
-        alert('There seems to be a code hidden under the painting.');
+        alert('There is a code hidden under the painting.');
         document.getElementById('hintMessage').textContent = "Hint: The code is the web development class number ";}
 }
 
@@ -78,11 +75,12 @@ function checkColorSequence() {
         document.getElementById('resultMessage').textContent = 'Well done!';
     } else {
         alert('Incorrect sequence. Try again!');
-        userSequence = []; // Reset sequence
+        userSequence = []; // Resets the  sequence
         document.getElementById('resultMessage').textContent = 'Wrong sequence, please try again.';
     }
 }
 
+//room 4 logic 
 
 // Room 5 Logic (unchanged from previous)
 function checkMathAnswer() {
