@@ -3,10 +3,10 @@ let isRoom1Completed = false;
 let isRoom2Completed = false;
 let isRoom3Completed = false;
 let isRoom4Completed = false;
-let isRoom5Completed = false; // New flag for Room 5
-let isFinalRoomCompleted = false; // Final room flag
+let isRoom5Completed = false;
+let isFinalRoomCompleted = false;
 
-// Room 1 Logic (unchanged from previous)
+// Room 1 Logic
 function inspectItem(item) {
     if (item === 'book') {
         alert('You found a clue in the book!');
@@ -25,49 +25,17 @@ function checkRoom1Completion() {
     }
 }
 
-function goToNextRoom() {
-    if (isRoom1Completed) {
-        window.location.href = "room2.html"; // Go to Room 2
-    } else if (isRoom2Completed) {
-        window.location.href = "room3.html"; // Go to Room 3
-    } else if (isRoom3Completed) {
-        window.location.href = "room4.html"; // Go to Room 4
-    } else if (isRoom4Completed) {
-        window.location.href = "room5.html"; // Go to Room 5
-    } else if (isRoom5Completed) {
-        window.location.href = "finalRoom.html"; // Go to Final Room
-    } else if (isFinalRoomCompleted) {
-        alert("You have already completed the game! Congratulations again!");
-    } else {
-        alert('You must solve the puzzles before proceeding!');
-    }
-}
-
-// Room 2 Logic (unchanged from previous)
-function inspectItemRoom2(item) {
-    if (item === 'painting') {
-        alert('There is a code hidden under the painting.');
-        document.getElementById('hintMessage').textContent = "Hint: The code is the web development class number ";}
-}
-
-function unlockDoor() {
-    const combination = document.getElementById('combinationInput').value;
-    if (combination === '225') {  // Correct combination
-        alert('The lock opens! You can now proceed to the next room.');
-        isRoom2Completed = true;
-        document.getElementById('nextRoom').disabled = false;
-    } else {
-        alert('Incorrect combination. Try again!');
-    }
-}
-
-// Room 3 Logic
-let colorSequence = ['red', 'white', 'blue']; // Correct color sequence
+// Room 3 Logic (Color Sequence)
+let colorSequence = ['red', 'white', 'blue'];
 let userSequence = [];
 
 function chooseColor(color) {
     userSequence.push(color);
     document.getElementById('currentSequence').textContent = userSequence.join(' -> ');
+
+    // Add visual feedback (optional)
+    const button = document.querySelector(`button[data-color="${color}"]`);
+    if (button) button.classList.add('selected');
 }
 
 function checkColorSequence() {
@@ -78,18 +46,40 @@ function checkColorSequence() {
         document.getElementById('resultMessage').textContent = 'Well done!';
     } else {
         alert('Incorrect sequence. Try again!');
-        userSequence = []; // Resets the  sequence
+        userSequence = []; // Reset the sequence
         document.getElementById('resultMessage').textContent = 'Wrong sequence, please try again.';
     }
 }
 
-//room 4 logic 
+// Room 4 Logic (Number Guessing Game)
+let randomNumber = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
 
-// Room 5 Logic (unchanged from previous)
+function checkGuess() {
+    const guess = parseInt(document.getElementById('guessInput').value);
+    const feedbackMessage = document.getElementById('feedbackMessage');
+    
+    if (isNaN(guess) || guess < 1 || guess > 10) {
+        feedbackMessage.textContent = "Please enter a valid number between 1 and 10.";
+        feedbackMessage.style.color = "red";
+    } else if (guess === randomNumber) {
+        feedbackMessage.textContent = "Correct! You guessed the right number.";
+        feedbackMessage.style.color = "green";
+        isRoom4Completed = true;
+        document.getElementById('nextRoom').disabled = false;
+    } else if (guess < randomNumber) {
+        feedbackMessage.textContent = "Too low. Try again!";
+        feedbackMessage.style.color = "orange";
+    } else {
+        feedbackMessage.textContent = "Too high. Try again!";
+        feedbackMessage.style.color = "orange";
+    }
+}
+
+// Room 5 Logic (Math Answer)
 function checkMathAnswer() {
     const answer = parseInt(document.getElementById('mathAnswer').value);
-    
-    if (answer === -1) { 
+
+    if (answer === -1) {
         alert('Correct! The door opens.');
         isRoom5Completed = true;
         document.getElementById('nextRoom').disabled = false;
@@ -100,15 +90,35 @@ function checkMathAnswer() {
     }
 }
 
-function restartGame() {
+// General Navigation Logic (for all rooms)
+function goToNextRoom() {
+    if (isRoom1Completed) {
+        window.location.href = "room2.html";
+    } else if (isRoom2Completed) {
+        window.location.href = "room3.html";
+    } else if (isRoom3Completed) {
+        window.location.href = "room4.html";
+    } else if (isRoom4Completed) {
+        window.location.href = "room5.html";
+    } else if (isRoom5Completed) {
+        window.location.href = "finalRoom.html";
+    } else if (isFinalRoomCompleted) {
+        alert("You have already completed the game! Congratulations again!");
+    } else {
+        alert('You must solve the puzzles before proceeding!');
+    }
+}
 
-    isRoom1Completed = false;
-    isRoom2Completed = false;
-    isRoom3Completed = false;
-    isRoom4Completed = false;
-    isRoom5Completed = false;
-    isFinalRoomCompleted = false;
-    
-   
-    window.location.href = "room1.html"; // Redirect to the first room
+// Restart Game
+function restartGame() {
+    if (confirm('Are you sure you want to restart the game? All progress will be lost.')) {
+        isRoom1Completed = false;
+        isRoom2Completed = false;
+        isRoom3Completed = false;
+        isRoom4Completed = false;
+        isRoom5Completed = false;
+        isFinalRoomCompleted = false;
+
+        window.location.href = "room1.html";
+    }
 }

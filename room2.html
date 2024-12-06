@@ -4,27 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruin Escape - Room 2</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css\room2.css">
 </head>
 <body>
     <div class="room">
         <h2>Room 2: The Hidden Vault</h2>
-        <p>"Inspect items to look for a code and click the key find the way out</p>
+        <p>"Inspect items to look for a code and unlock the door."</p>
         
-        <div id="items">
-            <button class="item" onclick="inspectItemRoom2('painting')">Inspect Painting</button>
-        </div>
-        
+        <!-- Interactive Painting -->
+        <img 
+            src= images\OIP.jpg
+            alt="A mysterious painting" 
+            class="interactive-item" 
+            onclick="inspectPainting()"
+        >
+
+        <!-- Input for Combination -->
         <label for="combinationInput">Enter combination to unlock the door:</label>
         <input type="number" id="combinationInput" max="9999">
         <button id="unlockDoor" class="next-btn" onclick="unlockDoor()">Unlock</button>
         
+        <!-- Hint Message -->
         <p id="hintMessage"></p>
+
+        <!-- Next Room Button -->
         <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
     </div>
-    
-    <script src="game.js"></script>
-    
 
+    <!-- Modal for Zoomed Painting -->
+    <div id="zoomModal" class="modal">
+        <span class="close" onclick="closeZoom()">&times;</span>
+        <img id="zoomedImage" class="modal-content" alt="Zoomed Painting">
+        <p id="modalCaption">Hint: The code is 225.</p>
+    </div>
 
+    <script>
+     // Function to display the zoom modal
+function inspectPainting() {
+    const modal = document.getElementById('zoomModal');
+    const zoomedImage = document.getElementById('zoomedImage');
+
+    // Set the image for the modal (corrected path with forward slashes)
+    zoomedImage.src = 'images/OIP2.jpg'; // Assuming 'images' is a folder in your project
+
+    // Show the modal
+    modal.style.display = 'block';
+}
+
+// Function to close the zoom modal
+function closeZoom() {
+    const modal = document.getElementById('zoomModal');
+    modal.style.display = 'none';
+}
+
+// Unlock door function
+function unlockDoor() {
+    const combination = document.getElementById('combinationInput').value;
+    if (combination === '225') {
+        alert('The lock opens! You can now proceed to the next room.');
+        document.getElementById('nextRoom').disabled = false;
+    } else {
+        alert('Incorrect combination. Try again!');
+    }
+}
+
+// Navigate to the next room
+function goToNextRoom() {
+    window.location.href = "room3.html"; // Replace with the actual URL for Room 3
+}
+
+    </script>
+</body>
 </html>

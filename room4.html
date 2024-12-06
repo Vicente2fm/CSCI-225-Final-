@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Room 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin Escape - Room 4</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="room">
+        <h2>Room 3: The Number Challenge</h2>
+        <p> "Guess the correct number between 1 and 10 to proceed."</p>
+        
+        <!-- Number Guessing Game -->
+        <label for="guessInput">Enter your guess (between 1 and 10):</label>
+        <input type="number" id="guessInput" min="1" max="10" />
+        <button id="checkGuess" class="next-btn" onclick="checkGuess()">Submit Guess</button>
+        
+        <!-- Feedback Message -->
+        <p id="feedbackMessage"></p>
+        
+        <!-- Next Room Button -->
+        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+    </div>
 
-</body>   
+    <script src="game.js"></script>
+</body>
 </html>
