@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruin Escape - Room 3</title>
-    <link rel="stylesheet" href='css/room3.css'>
+    <link rel="stylesheet" href="css/room3.css">
 </head>
 <body>
     <div class="room">
-        <h2>Room 3: The Color Puzzle Room</h2>
-        <p>Match the colors in the right order to proceed.The US Flag uses these colors</p>
+        <h2>Room 3: The Color Sequence</h2>
+        <p>Follow the color sequence to unlock the door.  Hint : Reminds me of a certain Freedom Flag</p>
         
         <div id="colorButtons">
-            <button class="color-btn" onclick="chooseColor('red')">Red</button>
-            <button class="color-btn" onclick="chooseColor('blue')">Blue</button>
-            <button class="color-btn" onclick="chooseColor('green')">Green</button>
-            <button class="color-btn" onclick="chooseColor('white')">White</button>
+            <button data-color="green" onclick="chooseColor('green')" style="background-color: rgb(15, 107, 29);">Green</button>
+            <button data-color="yellow" onclick="chooseColor('yellow')" style="background-color: rgb(217, 227, 14);">Yellow</button>
+            <button data-color="blue" onclick="chooseColor('blue')" style="background-color: blue;">Blue</button>
+            <button data-color="red" onclick="chooseColor('red')" style="background-color: red;">Red</button>
+            <button data-color="pink" onclick="chooseColor('pink')" style="background-color: rgb(234, 19, 98);">Pink</button>
+            <button data-color="white" onclick="chooseColor('white')" style="background-color: white; color: black;">White</button>
         </div>
         
-        <p>Current sequence: <span id="currentSequence">None</span></p>
-        <button id="checkSequence" class="next-btn" onclick="checkColorSequence()">Check Sequence</button>
-        
-        <p id="resultMessage"></p>
-        <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+        <div id="currentSequence">
+            <!-- Current sequence will be displayed here -->
+        </div>
+
+        <button onclick="checkColorSequence()">Submit Sequence</button>
+
+        <div id="resultMessage"></div>
+
+        <!-- Next Room Button (Initially disabled) -->
+        <button id="nextRoom" onclick="goToNextRoom()" disabled>Go to Next Room</button>
     </div>
-    
+
     <script src="game.js"></script>
 </body>
 </html>

@@ -1,10 +1,12 @@
 let inventory = [];
-let isRoom1Completed = false;
-let isRoom2Completed = false;
-let isRoom3Completed = false;
-let isRoom4Completed = false;
-let isRoom5Completed = false;
-let isFinalRoomCompleted = false;
+const roomCompletionStatus = {
+    room1: false,
+    room2: false,
+    room3: false,
+    room4: false,
+    room5: false,
+    finalRoom: false
+};
 
 // Room 1 Logic
 function inspectItem(item) {
@@ -15,12 +17,12 @@ function inspectItem(item) {
         alert('You found a key!');
         inventory.push('key');
     }
-    checkRoom1Completion();
+    checkRoomCompletion('room1');
 }
 
-function checkRoom1Completion() {
-    if (inventory.includes('key') && inventory.includes('clue from book')) {
-        isRoom1Completed = true;
+function checkRoomCompletion(room) {
+    if (room === 'room1' && inventory.includes('key') && inventory.includes('clue from book')) {
+        roomCompletionStatus.room1 = true;
         document.getElementById('nextRoom').disabled = false;
     }
 }
@@ -33,26 +35,34 @@ function chooseColor(color) {
     userSequence.push(color);
     document.getElementById('currentSequence').textContent = userSequence.join(' -> ');
 
-    // Add visual feedback (optional)
     const button = document.querySelector(`button[data-color="${color}"]`);
-    if (button) button.classList.add('selected');
+    if (button) {
+        button.classList.add('selected');
+    }
 }
 
 function checkColorSequence() {
     if (JSON.stringify(userSequence) === JSON.stringify(colorSequence)) {
         alert('Correct sequence! The door opens.');
-        isRoom3Completed = true;
+        roomCompletionStatus.room3 = true;
         document.getElementById('nextRoom').disabled = false;
         document.getElementById('resultMessage').textContent = 'Well done!';
     } else {
         alert('Incorrect sequence. Try again!');
-        userSequence = []; // Reset the sequence
+        userSequence = [];
         document.getElementById('resultMessage').textContent = 'Wrong sequence, please try again.';
     }
 }
 
+// Reset button highlights on load (no need to use window.onload)
+function resetButtons() {
+    document.querySelectorAll('button[data-color]').forEach(button => {
+        button.classList.remove('selected');
+    });
+}
+
 // Room 4 Logic (Number Guessing Game)
-let randomNumber = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+let randomNumber = Math.floor(Math.random() * 10) + 1;
 
 function checkGuess() {
     const guess = parseInt(document.getElementById('guessInput').value);
@@ -64,13 +74,10 @@ function checkGuess() {
     } else if (guess === randomNumber) {
         feedbackMessage.textContent = "Correct! You guessed the right number.";
         feedbackMessage.style.color = "green";
-        isRoom4Completed = true;
+        roomCompletionStatus.room4 = true;
         document.getElementById('nextRoom').disabled = false;
-    } else if (guess < randomNumber) {
-        feedbackMessage.textContent = "Too low. Try again!";
-        feedbackMessage.style.color = "orange";
     } else {
-        feedbackMessage.textContent = "Too high. Try again!";
+        feedbackMessage.textContent = guess < randomNumber ? "Too low. Try again!" : "Too high. Try again!";
         feedbackMessage.style.color = "orange";
     }
 }
@@ -81,7 +88,7 @@ function checkMathAnswer() {
 
     if (answer === -1) {
         alert('Correct! The door opens.');
-        isRoom5Completed = true;
+        roomCompletionStatus.room5 = true;
         document.getElementById('nextRoom').disabled = false;
         document.getElementById('mathResultMessage').textContent = 'Well done! The door opens.';
     } else {
@@ -90,35 +97,32 @@ function checkMathAnswer() {
     }
 }
 
-// General Navigation Logic (for all rooms)
+// General Navigation Logic (using roomCompletionStatus)
 function goToNextRoom() {
-    if (isRoom1Completed) {
-        window.location.href = "room2.html";
-    } else if (isRoom2Completed) {
-        window.location.href = "room3.html";
-    } else if (isRoom3Completed) {
-        window.location.href = "room4.html";
-    } else if (isRoom4Completed) {
-        window.location.href = "room5.html";
-    } else if (isRoom5Completed) {
-        window.location.href = "finalRoom.html";
-    } else if (isFinalRoomCompleted) {
-        alert("You have already completed the game! Congratulations again!");
-    } else {
-        alert('You must solve the puzzles before proceeding!');
+    for (let room in roomCompletionStatus) {
+        if (roomCompletionStatus[room]) {
+            const nextRoomIndex = Object.keys(roomCompletionStatus).indexOf(room) + 1;
+            const nextRoom = Object.keys(roomCompletionStatus)[nextRoomIndex];
+
+            if (nextRoom) {
+                window.location.href = `${nextRoom}.html`;
+                return;
+            }
+        }
     }
+    alert('You must solve the puzzles before proceeding!');
 }
 
 // Restart Game
 function restartGame() {
     if (confirm('Are you sure you want to restart the game? All progress will be lost.')) {
-        isRoom1Completed = false;
-        isRoom2Completed = false;
-        isRoom3Completed = false;
-        isRoom4Completed = false;
-        isRoom5Completed = false;
-        isFinalRoomCompleted = false;
+        // Reset all room completions
+        for (let room in roomCompletionStatus) {
+            roomCompletionStatus[room] = false;
+        }
 
+        // Reset inventory and UI
+        inventory = [];
         window.location.href = "room1.html";
     }
 }

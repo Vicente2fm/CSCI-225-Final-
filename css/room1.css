@@ -1,0 +1,10 @@
+.item {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.item:hover {
+    opacity: 0.8; /* Add hover effect */
+}

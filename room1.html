@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruin Escape - Room 1</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css\room1.css">
 </head>
 <body>
     <div class="room">
         <h2>Room 1: The Forgotten Chamber</h2>
-        <p>You are in an old chamber . You notice some items on the shelf and a locked door. Grab them to open the door to the next room</p>
+        <p>You are in an old chamber. You notice some items on the shelf and a locked door. Grab them to open the door to the next room.</p>
         <div id="items">
-            <button class="item" onclick="inspectItem('book')">Inspect Book</button>
-            <button class="item" onclick="inspectItem('key')">Inspect Key</button>
+            <!-- Book and Key Images with onclick event handlers -->
+            <img src="images\R.png" alt="key" class="item" onclick="inspectItem('key')" />
+            <img src="images/R (1).png" alt="book" class="item" onclick="inspectItem('book')" />
         </div>
         <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
     </div>
-    
+
     <script src="game.js"></script>
 </body>
 </html>
