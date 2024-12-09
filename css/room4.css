@@ -8,14 +8,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('images/R.jpg'); /* Use forward slashes */
-    /* Ensure the path points to your image */
+    background-image: url(/image/Rock.jpg); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-/* Semi-transparent overlay effect for readability */
+
 .room {
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid #ccc;
