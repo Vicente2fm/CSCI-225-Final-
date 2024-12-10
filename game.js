@@ -9,13 +9,15 @@ const roomCompletionStatus = {
 };
 
 const timeSpent = {
-    room1: 0,
+    room1: 1,
     room2: 0,
-    room3: 0,
+    room3: 2,
     room4: 0,
-    room5: 0,
+    room5: 5,
     finalRoom: 0
 };
+let startTime = null;
+let endTime = null;
 
 let roomEntryTime = null;
 let roomTimerInterval = null;
@@ -33,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function recordRoomEntry(room) {
     // Clear previous interval if one is running
+    if(room === "room1"){
+        startTime = new Date();
+        console.log(startTime);
+    }
+    
+    
+
+
     if (roomTimerInterval) {
         clearInterval(roomTimerInterval);
     }
@@ -61,7 +71,8 @@ function recordRoomCompletion(room) {
         timeSpent[room] += timeDiff;
         roomEntryTime = null;  // Reset entry time to avoid using outdated timestamps
         roomTimerInterval = null;  // Ensure that the interval is reset
-        console.log(`Time spent in ${room}: ${timeDiff.toFixed(2)} seconds`);
+        console.log(`Time spent in ${room}: ${timeSpent[room].toFixed(2)} seconds`);
+        console.log(`Time spent in room1: ${timeSpent["room1"].toFixed(2)} seconds`);
     }
 }
 
@@ -197,6 +208,7 @@ function displayTimeSummary() {
 function calculateTotalTime() {
     let totalTime = 0;
     for (let room in timeSpent) {
+        console.log(timeSpent[room]);
         totalTime += timeSpent[room];
     }
     return totalTime;
@@ -204,10 +216,18 @@ function calculateTotalTime() {
 
 // Function to display total time in final room
 function displayTotalTimeInFinalRoom() {
+    console.log("Displaying Final");
+    endTime = new Date();
+    console.log(endTime);
+    total = (endTime-startTime)/1000;
+    console.log(total.toFixed(2));
+
     const totalTime = calculateTotalTime();
     const totalTimeElement = document.getElementById('totalTime');
     if (totalTimeElement) {
-        totalTimeElement.textContent = `${totalTime.toFixed(2)} seconds`; // Display total time
+        totalTimeElement.textContent = `${totalTime.toFixed(2)} seconds`;
+        console.log(totalTime.toFixed(2))
+        //console.log(timeSpent) // Display total time
     } else {
         console.error('Total time element not found.');
     }
