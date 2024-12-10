@@ -42,7 +42,7 @@
         <img id="zoomedImage" class="modal-content" alt="Zoomed Painting">
         <p id="modalCaption">Hint: The code is 225.</p>
     </div>
-    <!--<script src="game.js"></script>-->
+    
     <script>
         let timerInterval;
         let timeSpent = 0;
@@ -92,6 +92,9 @@
 
         // Stop the timer
         function stopTimer() {
+            console.log('Total in room 2:',timeSpent);
+            localStorage.setItem('room2',timeSpent);
+            console.log('Saved to local storage');
             clearInterval(timerInterval);
         }
 
