@@ -1,3 +1,20 @@
+
+body 
+{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    background-image:url(../image/Lost\ Valor.jpg);
+}
+.room 
+{
+    background-color:#cd885184;
+  position:center;
+  align-items: center; 
+  overflow: hidden;
+    width: 800px;
+    margin: auto;
+}
 button {
     padding: 10px;
     margin: 5px;
@@ -19,3 +36,21 @@ button.selected {
     font-size: 20px;
     margin-top: 20px;
 }
+
+/* CSS */
+button 
+{
+ 
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+
+  
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  
+  user-select: none;
+  
+  touch-action: manipulation;
+}
+
