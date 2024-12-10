@@ -9,11 +9,11 @@ const roomCompletionStatus = {
 };
 
 const timeSpent = {
-    room1: 1,
+    room1: 0,
     room2: 0,
-    room3: 2,
+    room3: 0,
     room4: 0,
-    room5: 5,
+    room5: 0,
     finalRoom: 0
 };
 
@@ -211,10 +211,6 @@ function calculateTotalTime() {
     totalTime += Number(localStorage.getItem('room5'));
     console.log(localStorage.getItem('room5'));
     console.log('Total:',totalTime);
-    for (let room in timeSpent) {
-        console.log(timeSpent[room]);
-        totalTime += timeSpent[room];
-    }
     return totalTime;
 }
 
