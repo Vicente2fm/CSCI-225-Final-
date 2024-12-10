@@ -12,10 +12,15 @@
             <h2>Congratulations!</h2>
             <p>You have successfully escaped the ruin!</p>
             <p>Thank you for playing. </p>
+            <p>Total Time: <span id="totalTime"></span></p>
             <button class="next-btn" onclick="restartGame()">Play Again</button>
         </div>
     </div>
     
     <script src="game.js"></script>
+    <script>
+        // Display the total time spent on the final room
+        displayTotalTimeInFinalRoom();
+    </script>
 </body>
 </html>
