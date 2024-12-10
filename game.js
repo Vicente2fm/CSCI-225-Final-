@@ -147,7 +147,7 @@ function checkGuess() {
 
 function checkMathAnswer() {
     const answer = parseInt(document.getElementById('mathAnswer').value);
-    if (answer === 24) {
+    if (answer === 30) {
         alert('Correct! The door opens.');
         roomCompletionStatus.room5 = true;
         document.getElementById('nextRoom').disabled = false;
