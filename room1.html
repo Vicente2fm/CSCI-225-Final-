@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruin Escape - Room 1</title>
-    <link rel="stylesheet" href="css\room1.css">
+    <link rel="stylesheet" href="css/room1.css">
 </head>
 <body>
     <div class="room">
         <h2>Room 1: The Forgotten Chamber</h2>
         <p>You are in an old chamber. You notice some items on the shelf and a locked door. Grab them to open the door to the next room.</p>
+
+        <!-- Items to Inspect -->
         <div id="items">
-            <!-- Book and Key Images with onclick event handlers -->
-            <img src="image\R.png" alt="key" class="item" onclick="inspectItem('key')" />
+            <img src="image/R.png" alt="key" class="item" onclick="inspectItem('key')" />
             <img src="image/R (1).png" alt="book" class="item" onclick="inspectItem('book')" />
         </div>
+
+        <!-- Time Tracker -->
+        <div id="gameTimer">
+            <p>Time spent in this room: <span id="timeSpentCurrentRoom">0</span> seconds</p>
+        </div>
+
+        <!-- Next Room Button -->
         <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
     </div>
 

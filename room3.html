@@ -6,11 +6,16 @@
     <title>Ruin Escape - Room 3</title>
     <link rel="stylesheet" href="css/room3.css">
 </head>
-<body>
+<body onload="recordRoomEntry('room3')">
     <div class="room">
         <h2>Room 3: The Color Sequence</h2>
-        <p>Follow the color sequence to unlock the door.  Hint : Reminds me of a certain Freedom Flag</p>
+        <p>Follow the color sequence to unlock the door. Hint: Reminds me of a certain Freedom Flag</p>
         
+        <!-- Timer Display -->
+        <div id="timer">
+            Time Spent in Room: <span id="timeSpentCurrentRoom">0.00</span> seconds
+        </div>
+
         <div id="colorButtons">
             <button data-color="green" onclick="chooseColor('green')" style="background-color: rgb(15, 107, 29);">Green</button>
             <button data-color="yellow" onclick="chooseColor('yellow')" style="background-color: rgb(217, 227, 14);">Yellow</button>

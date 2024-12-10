@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruin Escape - Room 2</title>
-    <link rel="stylesheet" href="css\room2.css">
+    <link rel="stylesheet" href="css/room2.css">
 </head>
 <body>
     <div class="room">
@@ -13,7 +13,7 @@
         
         <!-- Interactive Painting -->
         <img 
-            src= image\OIP.jpg
+            src="image/OIP.jpg" 
             alt="A mysterious painting" 
             class="interactive-item" 
             onclick="inspectPainting()"
@@ -29,6 +29,11 @@
 
         <!-- Next Room Button -->
         <button id="nextRoom" class="next-btn" onclick="goToNextRoom()" disabled>Next Room</button>
+
+        <!-- Timer Display -->
+        <div id="gameTimer">
+            <p>Time spent in this room: <span id="timeSpentCurrentRoom">0</span> seconds</p>
+        </div>
     </div>
 
     <!-- Modal for Zoomed Painting -->
@@ -39,40 +44,61 @@
     </div>
 
     <script>
-     // Function to display the zoom modal
-function inspectPainting() {
-    const modal = document.getElementById('zoomModal');
-    const zoomedImage = document.getElementById('zoomedImage');
+        let timerInterval;
+        let timeSpent = 0;
 
-    // Set the image for the modal (corrected path with forward slashes)
-    zoomedImage.src = 'image/OIP2.jpg'; // Assuming 'images' is a folder in your project
+        // Function to display the zoom modal
+        function inspectPainting() {
+            const modal = document.getElementById('zoomModal');
+            const zoomedImage = document.getElementById('zoomedImage');
 
-    // Show the modal
-    modal.style.display = 'block';
-}
+            // Set the image for the modal (corrected path with forward slashes)
+            zoomedImage.src = 'image/OIP2.jpg'; // Assuming 'images' is a folder in your project
 
-// Function to close the zoom modal
-function closeZoom() {
-    const modal = document.getElementById('zoomModal');
-    modal.style.display = 'none';
-}
+            // Show the modal
+            modal.style.display = 'block';
+        }
 
-// Unlock door function
-function unlockDoor() {
-    const combination = document.getElementById('combinationInput').value;
-    if (combination === '225') {
-        alert('The lock opens! You can now proceed to the next room.');
-        document.getElementById('nextRoom').disabled = false;
-    } else {
-        alert('Incorrect combination. Try again!');
-    }
-}
+        // Function to close the zoom modal
+        function closeZoom() {
+            const modal = document.getElementById('zoomModal');
+            modal.style.display = 'none';
+        }
 
-// Navigate to the next room
-function goToNextRoom() {
-    window.location.href = "room3.html"; // Replace with the actual URL for Room 3
-}
+        // Unlock door function
+        function unlockDoor() {
+            const combination = document.getElementById('combinationInput').value;
+            if (combination === '225') {
+                alert('The lock opens! You can now proceed to the next room.');
+                document.getElementById('nextRoom').disabled = false;
+                stopTimer(); // Stop the timer when the door is unlocked
+            } else {
+                alert('Incorrect combination. Try again!');
+            }
+        }
 
+        // Navigate to the next room
+        function goToNextRoom() {
+            window.location.href = "room3.html"; // Replace with the actual URL for Room 3
+        }
+
+        // Start the timer when entering Room 2
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                timeSpent++;
+                document.getElementById('timeSpentCurrentRoom').textContent = timeSpent;
+            }, 1000);
+        }
+
+        // Stop the timer
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        // Start the timer as soon as Room 2 is loaded
+        window.onload = function() {
+            startTimer();
+        };
     </script>
 </body>
 </html>

@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congratulations - You Escaped!</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Final Room</title>
 </head>
-<body>
-    <div class="room final-room">
-        <div class="congratulations-message">
-            <h2>Congratulations!</h2>
-            <p>You have successfully escaped the ruin!</p>
-            <p>Thank you for playing. </p>
-            <button class="next-btn" onclick="restartGame()">Play Again</button>
-        </div>
-    </div>
-    
+<body id="finalRoom">
+    <h1>Congratulations! You've completed all the rooms.</h1>
+    <p>Total time spent in all rooms: <span id="totalTime">0.00 seconds</span></p>
+    <button onclick="restartGame()">Restart Game</button>
+
     <script src="game.js"></script>
 </body>
 </html>
