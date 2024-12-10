@@ -9,15 +9,13 @@ const roomCompletionStatus = {
 };
 
 const timeSpent = {
-    room1: 1,
+    room1: 0,
     room2: 0,
-    room3: 2,
+    room3: 0,
     room4: 0,
-    room5: 5,
+    room5: 0,
     finalRoom: 0
 };
-let startTime = null;
-let endTime = null;
 
 let roomEntryTime = null;
 let roomTimerInterval = null;
@@ -35,13 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function recordRoomEntry(room) {
     // Clear previous interval if one is running
-    if(room === "room1"){
-        startTime = new Date();
-        console.log(startTime);
-    }
-    
-    
-
 
     if (roomTimerInterval) {
         clearInterval(roomTimerInterval);
@@ -69,6 +60,8 @@ function recordRoomCompletion(room) {
         const roomExitTime = new Date();
         const timeDiff = (roomExitTime - roomEntryTime) / 1000;  // Time spent in seconds
         timeSpent[room] += timeDiff;
+        localStorage.setItem(room,timeDiff);
+        console.log('saved to local storage');
         roomEntryTime = null;  // Reset entry time to avoid using outdated timestamps
         roomTimerInterval = null;  // Ensure that the interval is reset
         console.log(`Time spent in ${room}: ${timeSpent[room].toFixed(2)} seconds`);
@@ -207,26 +200,28 @@ function displayTimeSummary() {
 // Calculate total time spent in all rooms
 function calculateTotalTime() {
     let totalTime = 0;
-    for (let room in timeSpent) {
-        console.log(timeSpent[room]);
-        totalTime += timeSpent[room];
-    }
+    totalTime += Number(localStorage.getItem('room1'));
+    console.log(localStorage.getItem('room1'));
+    totalTime += Number(localStorage.getItem('room2'));
+    console.log(localStorage.getItem('room2'));
+    totalTime += Number(localStorage.getItem('room3'));
+    console.log(localStorage.getItem('room3'));
+    totalTime += Number(localStorage.getItem('room4'));
+    console.log(localStorage.getItem('room4'));
+    totalTime += Number(localStorage.getItem('room5'));
+    console.log(localStorage.getItem('room5'));
+    console.log('Total:',totalTime);
     return totalTime;
 }
 
 // Function to display total time in final room
 function displayTotalTimeInFinalRoom() {
     console.log("Displaying Final");
-    endTime = new Date();
-    console.log(endTime);
-    total = (endTime-startTime)/1000;
-    console.log(total.toFixed(2));
-
-    const totalTime = calculateTotalTime();
+    const total = calculateTotalTime();
     const totalTimeElement = document.getElementById('totalTime');
     if (totalTimeElement) {
-        totalTimeElement.textContent = `${totalTime.toFixed(2)} seconds`;
-        console.log(totalTime.toFixed(2))
+        totalTimeElement.textContent = `${total} seconds`;
+        console.log('Displaying total:',total)
         //console.log(timeSpent) // Display total time
     } else {
         console.error('Total time element not found.');
