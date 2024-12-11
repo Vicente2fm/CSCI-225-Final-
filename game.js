@@ -160,7 +160,7 @@ function checkMathAnswer() {
 }
 async function goToNextRoom() {
     
-    var audio = new Audio('images/Audio/tada.mp3');
+    var audio = new Audio('images/Audio/su.mp3');
     audio.play();
     await new Promise(r => setTimeout(r, 500)); //sleep 0.5s
     for (let room in roomCompletionStatus) {
