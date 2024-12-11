@@ -5,7 +5,7 @@ const roomCompletionStatus = {
     room3: false,
     room4: false,
     room5: false,
-    finalRoom: false
+    finalroom: false
 };
 
 const timeSpent = {
@@ -14,7 +14,7 @@ const timeSpent = {
     room3: 0,
     room4: 0,
     room5: 0,
-    finalRoom: 0
+    finalroom: 0
 };
 
 let roomEntryTime = null;
@@ -214,7 +214,7 @@ function calculateTotalTime() {
     totalTime += Number(localStorage.getItem('room5'));
     console.log(localStorage.getItem('room5'));
     console.log('Total:',totalTime);
-    return totalTime;
+    return totalTime.toFixed(2);
 }
 
 // Function to display total time in final room
