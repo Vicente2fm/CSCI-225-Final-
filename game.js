@@ -205,15 +205,15 @@ function displayTimeSummary() {
 function calculateTotalTime() {
     let totalTime = 0;
     totalTime += Number(localStorage.getItem('room1'));
-    console.log(localStorage.getItem('room1'));
+    //console.log(localStorage.getItem('room1'));
     totalTime += Number(localStorage.getItem('room2'));
-    console.log(localStorage.getItem('room2'));
+    //console.log(localStorage.getItem('room2'));
     totalTime += Number(localStorage.getItem('room3'));
-    console.log(localStorage.getItem('room3'));
+    //console.log(localStorage.getItem('room3'));
     totalTime += Number(localStorage.getItem('room4'));
-    console.log(localStorage.getItem('room4'));
+    //console.log(localStorage.getItem('room4'));
     totalTime += Number(localStorage.getItem('room5'));
-    console.log(localStorage.getItem('room5'));
+    //console.log(localStorage.getItem('room5'));
     console.log('Total:',totalTime);
     return totalTime.toFixed(2);
 }
