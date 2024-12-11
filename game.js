@@ -162,11 +162,12 @@ async function goToNextRoom() {
     
     var audio = new Audio('images/Audio/click1.mp3');
     audio.play();
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 500)); //sleep 0.5s
     for (let room in roomCompletionStatus) {
         if (roomCompletionStatus[room]) {
             const nextRoomIndex = Object.keys(roomCompletionStatus).indexOf(room) + 1;
             const nextRoom = Object.keys(roomCompletionStatus)[nextRoomIndex];
+            console.log(nextRoom);
             if (nextRoom) {
                 recordRoomCompletion(room);  // Ensure current room is marked complete before proceeding
                 recordRoomEntry(nextRoom);  // Start timer for the next room
