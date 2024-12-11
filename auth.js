@@ -40,12 +40,4 @@ function submitUser(){
     document.getElementById("condWelcome").innerText = "Welcome to the game " + input + "!"
 }
 
-function submitTime(){
-
-}
-
-function getTimes(){
-
-}
-    
 
