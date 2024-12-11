@@ -158,8 +158,11 @@ function checkMathAnswer() {
         document.getElementById('mathResultMessage').textContent = 'Wrong answer, please try again.';
     }
 }
-
-function goToNextRoom() {
+async function goToNextRoom() {
+    
+    var audio = new Audio('images/Audio/click1.mp3');
+    audio.play();
+    await new Promise(r => setTimeout(r, 500));
     for (let room in roomCompletionStatus) {
         if (roomCompletionStatus[room]) {
             const nextRoomIndex = Object.keys(roomCompletionStatus).indexOf(room) + 1;

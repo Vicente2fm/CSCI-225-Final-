@@ -78,7 +78,10 @@
         }
 
         // Navigate to the next room
-        function goToNextRoom() {
+        async function goToNextRoom() {
+            var audio = new Audio('images/Audio/click1.mp3');
+            audio.play();
+            await new Promise(r => setTimeout(r, 500));
             window.location.href = "room3.html"; // Replace with the actual URL for Room 3
         }
 
