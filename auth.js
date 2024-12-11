@@ -14,30 +14,38 @@ const db = firebase.firestore();
 const auth = firebaseApp.auth();
 
 
-
 async function goToFirstRoom(){
     var audio = new Audio('images/Audio/click1.mp3');
     audio.play();
     await new Promise(r => setTimeout(r, 500)); //sleep 0.5s
     window.location.href = `room1.html`;  // Navigate to the next room
 }
-// Save the list to database
-$('#save').click(function(){
-    $(this).text("saving...");
-    var value = $(this).text();
-    db.collection('grocerylist').add({item:value});
-});
-data = {
-    beans: "baked",
-    flag: "checked",
-    level: 2,
-    nothing: null,
-    beans: ["baked", "beans", "bacon"]
+
+function submitUser(){
+    console.log("Start submit");
+
+    const userF = document.getElementById("user");
+    var input = userF.value;
+    console.log('User is :',input);
+
+    if(input===''){
+        localStorage.setItem('currUser','anonymous');
+        console.log("set to anonymous")
+        input = 'anonymous'
+    }
+    else{
+        localStorage.setItem('currUser',input);
+        console.log("set to input");
+    }
+    document.getElementById("condWelcome").innerText = "Welcome to the game " + input + "!"
 }
-//db.collection('test').add(data); //{json format}
 
+function submitTime(){
 
+}
 
-console.log("next room travel");
+function getTimes(){
+
+}
     
 
