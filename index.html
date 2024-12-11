@@ -9,26 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
 	</script>
-</head>
-<body>
-    <h1>RuinEscape</h1>
-    <div>
-        <h3>Login</h3>
-        <form id="login">
-            <p>
-                <label for="user">User name (email address):</label>
-                <input type="text" id="user" name="user" placeholder="anonymous">
-            </p>
-            <p>
-                <label for="pass">Password:</label>
-                <input type="text" id="pass" name="pass" placeholder="">
-            </p>
-            <p>
-                <input type="submit" value="submit">
-            </p>
-        </form>
-    </div>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
@@ -38,5 +18,23 @@
 	<!--  Save and display data on real time  -->
 
 	<script src="auth.js"></script>
-    <script src="game.js"></script>
+</head>
+<body>
+    <h1>RuinEscape</h1>
+    <div>
+        <h3>Login</h3>
+        <p>Login to save your score or leave empty to play anonymous</p>
+        <form id="login">
+            <p>
+                <label for="user">User name (email address):</label>
+                <input type="text" id="user" name="user" placeholder="anonymous">
+            </p>
+            <p>
+                <input type="submit" value="submit">
+            </p>
+        </form>
+        <p>Press Start to begin your journey into the ruins</p>
+        <button id="goToFirst" class="next-btn" onclick="goToFirstRoom()">Start</button>
+    </div>
+
 </body>

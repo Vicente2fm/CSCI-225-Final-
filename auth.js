@@ -8,40 +8,36 @@ const firebaseConfig = {
     measurementId: "G-CHFDD3EMB9"
 };
 
-//Initialize firebase
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebaseApp.auth();
 
-//Login using popup
 
-$('#login').submit(function (e) {
-    console.log("Submit clicked");
-    var provider = new firebase.auth.GoogleAuthProvider();
-    
-    firebase.auth()
-    .signInWithPopup(provider)
-    .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
 
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // IdP data available in result.additionalUserInfo.profile.
-    // ...
-    console.log(user);
-    
-    }).catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        console.log(errorCode);
-    });
-    console.log("next room travel");
-    
+async function goToFirstRoom(){
+    var audio = new Audio('images/Audio/click1.mp3');
+    audio.play();
+    await new Promise(r => setTimeout(r, 500)); //sleep 0.5s
+    window.location.href = `room1.html`;  // Navigate to the next room
+}
+// Save the list to database
+$('#save').click(function(){
+    $(this).text("saving...");
+    var value = $(this).text();
+    db.collection('grocerylist').add({item:value});
 });
+data = {
+    beans: "baked",
+    flag: "checked",
+    level: 2,
+    nothing: null,
+    beans: ["baked", "beans", "bacon"]
+}
+//db.collection('test').add(data); //{json format}
+
+
+
+console.log("next room travel");
+    
+
