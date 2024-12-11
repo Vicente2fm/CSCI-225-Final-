@@ -28,7 +28,7 @@ function submitTime(){
     //const f = {fieldname:t};
     db.collection('time').doc(user).set({
         [fieldname]: t
-    });
+    }, { merge: true });
 }
 
 async function getTimes(){
