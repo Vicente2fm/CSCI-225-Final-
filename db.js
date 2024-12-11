@@ -29,7 +29,27 @@ function submitTime(){
     });
 }
 
-function getTimes(){
+async function getTimes(){
     console.log("geting");
+    const out = document.getElementById('pastTimes');
+    const user = localStorage.getItem('currUser');
+    var docRef = db.collection("time").doc(user);
+
+    docRef.get().then((doc) => {
+    if (doc.exists) {
+        let data = doc.data();
+        var docString =`${data.timeTotal}`;
+
+        out.innerText = "Previous attempts:\n " + docString;
+        console.log("1 Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+    console.log("2 document",doc.data());
+    
 }
     
